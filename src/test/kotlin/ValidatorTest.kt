@@ -20,7 +20,7 @@ object ValidatorTest : Spek({
                     0, 0, 0, 0, 0, 0, 0, 0, 0
                 )
             )
-            assertThat(validate(board)).isTrue()
+            assertThat(board.validate()).isTrue()
         }
 
         it("sample board is ok") {
@@ -37,7 +37,7 @@ object ValidatorTest : Spek({
                     9, 8, 0, 5, 0, 6, 0, 0, 3
                 )
             )
-            assertThat(validate(board)).isTrue()
+            assertThat(board.validate()).isTrue()
         }
 
         it("board with duplicates in a row is not ok") {
@@ -54,7 +54,7 @@ object ValidatorTest : Spek({
                     0, 0, 0, 0, 0, 0, 0, 0, 0
                 )
             )
-            assertThat(validate(board)).isFalse()
+            assertThat(board.validate()).isFalse()
         }
 
         it("board with duplicates in a column is not ok") {
@@ -71,7 +71,7 @@ object ValidatorTest : Spek({
                     0, 0, 0, 0, 0, 0, 0, 0, 0
                 )
             )
-            assertThat(validate(board)).isFalse()
+            assertThat(board.validate()).isFalse()
         }
 
         it("board with duplicates in a sub grid is not ok") {
@@ -88,7 +88,24 @@ object ValidatorTest : Spek({
                     4, 0, 0, 0, 0, 0, 0, 0, 0
                 )
             )
-            assertThat(validate(board)).isFalse()
+            assertThat(board.validate()).isFalse()
+        }
+
+        it("board where an unsolved square has no options is not ok") {
+            val board = Board(
+                listOf(
+                    1, 2, 3, 4, 5, 6, 7, 8, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 9,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0
+                )
+            )
+            assertThat(board.validate()).isFalse()
         }
 
     }
