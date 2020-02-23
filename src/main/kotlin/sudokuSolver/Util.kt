@@ -1,3 +1,5 @@
+package sudokuSolver
+
 fun <T> List<T>.update(requestedIndex: Int, newValue: T) =
     this.mapIndexed { index, value ->
         if (index == requestedIndex) {

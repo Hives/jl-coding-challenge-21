@@ -1,3 +1,5 @@
+package sudokuSolver
+
 import assertk.assertThat
 import assertk.assertions.isFalse
 import assertk.assertions.isTrue

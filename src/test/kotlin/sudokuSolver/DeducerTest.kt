@@ -1,3 +1,5 @@
+package sudokuSolver
+
 import assertk.assertThat
 import assertk.assertions.isEqualTo
 import org.spekframework.spek2.Spek
@@ -213,7 +215,7 @@ object DeducerTest : Spek({
                             0, 0, 0, 0, 0, 0, 0, 0, 0,
                             0, 0, 0, 0, 0, 0, 0, 0, 0,
                             0, 0, 0, 0, 0, 0, 1, 4, 7,
-                            0, 0, 0, 0, 0, 0, 2, 5 , 8,
+                            0, 0, 0, 0, 0, 0, 2, 5, 8,
                             0, 0, 0, 0, 0, 0, 3, 6, 9
                         )
                     )

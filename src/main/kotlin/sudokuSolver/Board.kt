@@ -1,3 +1,5 @@
+package sudokuSolver
+
 data class Board(val squares: List<Int>) {
     fun getPossibilitiesFor(index: Int) = (1..9).toSet() - getPeersFor(index)
 
@@ -19,7 +21,7 @@ data class Board(val squares: List<Int>) {
             .mapIndexed { index, value -> Pair(index, value) }
             .filter { (_, value) -> value == 0 }
             .minBy { (index, _) -> getPossibilitiesFor(index).size }
-            ?.let { (index, value) ->
+            ?.let { (index, _) ->
                 if (getPeersFor(index).size == 9) throw Error("This square has NO possibilities?!")
                 index
             }

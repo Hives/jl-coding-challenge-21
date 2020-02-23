@@ -1,3 +1,5 @@
+package sudokuSolver
+
 import assertk.assertThat
 import assertk.assertions.isEqualTo
 import org.spekframework.spek2.Spek
