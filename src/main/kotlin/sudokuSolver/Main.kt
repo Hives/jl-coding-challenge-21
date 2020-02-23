@@ -1,16 +1,28 @@
 package sudokuSolver
 
 fun main() {
+
 }
 
-fun solve(board: Board): Board = board.deduce()
+fun solve(board: Board): Board {
+    return deduceUntilExhausted(board)
+}
+
+tailrec fun deduceUntilExhausted(board: Board): Board {
+    val deduced = board.deduce()
+    return if (board == deduced) {
+        board
+    } else {
+        deduceUntilExhausted(deduced)
+    }
+}
 
 data class Guess(val board: Board, val index: Int)
 
 fun guess(board: Board): Guess {
     val guessedIndex = board.unsolvedSquareWithFewestPossibilities()
     val guessedValue = board.getPossibilitiesFor(guessedIndex).min()
-        ?: throw Error("The square we tried to SudokuSolver.guess had no possible solutions")
+        ?: throw Error("The square we tried to guess had no possible solutions")
     val newBoard =
         Board(board.squares.mapIndexed { index, value ->
             if (index == guessedIndex) {
@@ -36,3 +48,4 @@ fun Board.deduce(): Board =
             value
         }
     })
+
