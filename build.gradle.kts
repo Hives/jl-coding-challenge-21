@@ -27,3 +27,10 @@ tasks {
         kotlinOptions.jvmTarget = "1.8"
     }
 }
+
+tasks.test {
+    useJUnitPlatform()
+    testLogging {
+        events("passed", "skipped", "failed")
+    }
+}

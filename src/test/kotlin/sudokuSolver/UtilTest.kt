@@ -6,7 +6,7 @@ import org.spekframework.spek2.Spek
 import org.spekframework.spek2.style.specification.describe
 
 object UtilTest : Spek({
-    describe("List update extension method") {
+    describe("'update' for immutable lists'") {
         it("can update a list of ints") {
             assertThat(listOf(1, 2, 3).update(0, 99)).isEqualTo(listOf(99, 2, 3))
         }
@@ -22,7 +22,7 @@ object UtilTest : Spek({
         }
     }
 
-    describe("'Add' for immutable lists") {
+    describe("'add' for immutable lists") {
         it("returns a new list with the element inserted") {
             assertThat(listOf(1,1,1,1).add(2, 9)).isEqualTo(listOf(1,1,9,1,1))
         }
