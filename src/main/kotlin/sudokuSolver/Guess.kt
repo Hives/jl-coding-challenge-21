@@ -4,8 +4,6 @@ data class Guess(val board: Board, val index: Int)
 
 fun makeAGuess(board: Board): Guess {
     val guessIndex = board.unsolvedSquareWithFewestPossibilities()
-    println("guessIndex: $guessIndex")
-    println("possibilities: ${board.getPossibilitiesFor(guessIndex)}")
     val guessValue = board.getPossibilitiesFor(guessIndex).min()
         ?: throw Error("The square we tried to guess had no possible solutions")
     val newBoard =
@@ -20,6 +18,7 @@ fun makeAGuess(board: Board): Guess {
 }
 
 tailrec fun modifyLastGuess(history: History): History {
+    if (history.size == 1) throw Error("Puzzle has no solutions")
     val lastGuess = history.last()
     val lastGuessValue = lastGuess.board.squares[lastGuess.index]
     val possibilities = lastGuess.board.getPossibilitiesFor(lastGuess.index)

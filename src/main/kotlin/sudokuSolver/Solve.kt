@@ -3,6 +3,7 @@ package sudokuSolver
 fun solve(board: Board): Board {
     val initialHistory = listOf(Guess(board, -1))
     val history = deduceAndGuessUnlessSolved(initialHistory)
+    history.last().board.print()
     return history.last().board
 }
 
