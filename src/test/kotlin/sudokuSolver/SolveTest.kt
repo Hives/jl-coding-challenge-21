@@ -7,7 +7,7 @@ import assertk.assertions.isTrue
 import org.spekframework.spek2.Spek
 import org.spekframework.spek2.style.specification.describe
 
-object SolverTest : Spek({
+object SolveTest : Spek({
     describe("Solver") {
         it("gives the right answer for a board that can be solved with multiple iterations of the deducer") {
             val board = Board(
