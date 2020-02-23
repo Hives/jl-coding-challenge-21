@@ -21,8 +21,8 @@ object GuesserTest : Spek({
                     0, 0, 0, 0, 0, 0, 0, 0, 0
                 )
             )
-            assertThat(guess(board).index).isEqualTo(0)
-            assertThat(guess(board).board.squares[0]).isEqualTo(1)
+            assertThat(makeAGuess(board).index).isEqualTo(0)
+            assertThat(makeAGuess(board).board.squares[0]).isEqualTo(1)
         }
 
         it("guesses on a non-empty board") {
@@ -39,8 +39,8 @@ object GuesserTest : Spek({
                     0, 0, 0, 0, 0, 0, 0, 0, 0
                 )
             )
-            assertThat(guess(board).index).isEqualTo(7)
-            assertThat(guess(board).board.squares[7]).isEqualTo(8)
+            assertThat(makeAGuess(board).index).isEqualTo(7)
+            assertThat(makeAGuess(board).board.squares[7]).isEqualTo(8)
         }
 
         it("guesses on another non-empty board") {
@@ -57,8 +57,8 @@ object GuesserTest : Spek({
                     0, 0, 0, 0, 0, 0, 0, 0, 0
                 )
             )
-            assertThat(guess(board).index).isEqualTo(21)
-            assertThat(guess(board).board.squares[21]).isEqualTo(1)
+            assertThat(makeAGuess(board).index).isEqualTo(21)
+            assertThat(makeAGuess(board).board.squares[21]).isEqualTo(1)
         }
     }
 

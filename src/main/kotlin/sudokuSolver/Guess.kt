@@ -2,7 +2,7 @@ package sudokuSolver
 
 data class Guess(val board: Board, val index: Int)
 
-fun guess(board: Board): Guess {
+fun makeAGuess(board: Board): Guess {
     val guessIndex = board.unsolvedSquareWithFewestPossibilities()
     println("guessIndex: $guessIndex")
     println("possibilities: ${board.getPossibilitiesFor(guessIndex)}")
