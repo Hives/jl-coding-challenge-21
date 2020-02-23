@@ -1,9 +1,12 @@
 package sudokuSolver
 
 data class Board(val squares: List<Int>) {
+
     fun getPossibilitiesFor(index: Int) = (1..9).toSet() - getPeersFor(index)
 
-    fun validate(): Boolean = noSquareHasSameValueAsAPeer() && everyEmptySquareHasAPossibleSolution()
+    fun isSolution(): Boolean = !squares.contains(0) && isValid()
+
+    fun isValid(): Boolean = noSquareHasSameValueAsAPeer() && everyEmptySquareHasAPossibleSolution()
 
     private fun noSquareHasSameValueAsAPeer(): Boolean =
         squares

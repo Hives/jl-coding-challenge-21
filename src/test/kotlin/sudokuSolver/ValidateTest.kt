@@ -6,8 +6,8 @@ import assertk.assertions.isTrue
 import org.spekframework.spek2.Spek
 import org.spekframework.spek2.style.specification.describe
 
-object ValidatorTest : Spek({
-    describe("Validator") {
+object ValidateTest : Spek({
+    describe("Validate method") {
         it("empty board is ok") {
             val board = Board(
                 listOf(
@@ -22,7 +22,7 @@ object ValidatorTest : Spek({
                     0, 0, 0, 0, 0, 0, 0, 0, 0
                 )
             )
-            assertThat(board.validate()).isTrue()
+            assertThat(board.isValid()).isTrue()
         }
 
         it("sample board is ok") {
@@ -39,7 +39,7 @@ object ValidatorTest : Spek({
                     9, 8, 0, 5, 0, 6, 0, 0, 3
                 )
             )
-            assertThat(board.validate()).isTrue()
+            assertThat(board.isValid()).isTrue()
         }
 
         it("board with duplicates in a row is not ok") {
@@ -56,7 +56,7 @@ object ValidatorTest : Spek({
                     0, 0, 0, 0, 0, 0, 0, 0, 0
                 )
             )
-            assertThat(board.validate()).isFalse()
+            assertThat(board.isValid()).isFalse()
         }
 
         it("board with duplicates in a column is not ok") {
@@ -73,7 +73,7 @@ object ValidatorTest : Spek({
                     0, 0, 0, 0, 0, 0, 0, 0, 0
                 )
             )
-            assertThat(board.validate()).isFalse()
+            assertThat(board.isValid()).isFalse()
         }
 
         it("board with duplicates in a sub grid is not ok") {
@@ -90,7 +90,7 @@ object ValidatorTest : Spek({
                     4, 0, 0, 0, 0, 0, 0, 0, 0
                 )
             )
-            assertThat(board.validate()).isFalse()
+            assertThat(board.isValid()).isFalse()
         }
 
         it("board where an unsolved square has no options is not ok") {
@@ -107,7 +107,7 @@ object ValidatorTest : Spek({
                     0, 0, 0, 0, 0, 0, 0, 0, 0
                 )
             )
-            assertThat(board.validate()).isFalse()
+            assertThat(board.isValid()).isFalse()
         }
 
     }

@@ -5,8 +5,8 @@ import assertk.assertions.isEqualTo
 import org.spekframework.spek2.Spek
 import org.spekframework.spek2.style.specification.describe
 
-object DeducerTest : Spek({
-    describe("deducer") {
+object DeduceTest : Spek({
+    describe("Deduce method") {
         context("If it can't make a deduction") {
             val board = Board(
                 listOf(

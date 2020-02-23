@@ -2,6 +2,8 @@ package sudokuSolver
 
 import assertk.assertThat
 import assertk.assertions.isEqualTo
+import assertk.assertions.isFalse
+import assertk.assertions.isTrue
 import org.spekframework.spek2.Spek
 import org.spekframework.spek2.style.specification.describe
 
@@ -80,6 +82,26 @@ object BoardTest : Spek({
             )
 
             assertThat(board.unsolvedSquareWithFewestPossibilities()).isEqualTo(6)
+        }
+    }
+
+    describe("solution validator") {
+        it("valid solution is valid") {
+            assertThat(completeBoard.isSolution()).isTrue()
+        }
+
+        it("board with an empty square is not a solution") {
+            val boardWithEmptySquare = Board(completeBoard.squares.update(0, 0))
+            assertThat(boardWithEmptySquare.isSolution()).isFalse()
+        }
+
+        it("complete but invalid board is not a solution") {
+            val completeButInvalidBoard = Board(
+                completeBoard.squares
+                    .update(0, 1)
+                    .update(1, 1)
+            )
+            assertThat(completeButInvalidBoard.isSolution()).isFalse()
         }
     }
 })

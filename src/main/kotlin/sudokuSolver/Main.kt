@@ -5,7 +5,8 @@ fun main() {
 }
 
 fun solve(board: Board): Board {
-    return deduceUntilExhausted(board)
+    val deduced = deduceUntilExhausted(board)
+    return deduced
 }
 
 tailrec fun deduceUntilExhausted(board: Board): Board {
