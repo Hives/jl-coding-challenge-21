@@ -1,15 +1,9 @@
 package sudokuSolver
 
 fun main() {
-    val board = Board(
-        completeBoard.squares
-            .update(0, 0)
-            .update(1, 0)
-    )
-    board.print()
 }
 
-typealias History = List<Guess>
+fun solve(board: Board): Board = board.deduce()
 
 data class Guess(val board: Board, val index: Int)
 
@@ -28,10 +22,10 @@ fun guess(board: Board): Guess {
     return Guess(newBoard, guessedIndex)
 }
 
-fun deduce(board: Board): Board =
-    Board(board.squares.mapIndexed { index, value ->
+fun Board.deduce(): Board =
+    Board(this.squares.mapIndexed { index, value ->
         if (value == 0) {
-            val unusedNumbers = (1..9).toList().filter { !(board.getPeersFor(index)).contains(it) }
+            val unusedNumbers = (1..9).toList().filter { !(this.getPeersFor(index)).contains(it) }
 
             if (unusedNumbers.size == 1) {
                 unusedNumbers.single()

@@ -22,7 +22,7 @@ object DeducerTest : Spek({
                 )
             )
             it("returns the same board") {
-                assertThat(deduce(board)).isEqualTo(board)
+                assertThat(board.deduce()).isEqualTo(board)
             }
         }
 
@@ -55,7 +55,7 @@ object DeducerTest : Spek({
                             0, 0, 0, 0, 0, 0, 0, 0, 0
                         )
                     )
-                    assertThat(deduce(board)).isEqualTo(expectedBoard)
+                    assertThat(board.deduce()).isEqualTo(expectedBoard)
                 }
             }
 
@@ -87,7 +87,7 @@ object DeducerTest : Spek({
                             9, 8, 7, 6, 5, 4, 3, 2, 1
                         )
                     )
-                    assertThat(deduce(board)).isEqualTo(expectedBoard)
+                    assertThat(board.deduce()).isEqualTo(expectedBoard)
                 }
             }
         }
@@ -121,7 +121,7 @@ object DeducerTest : Spek({
                             9, 0, 0, 0, 0, 0, 0, 0, 0
                         )
                     )
-                    assertThat(deduce(board)).isEqualTo(expectedBoard)
+                    assertThat(board.deduce()).isEqualTo(expectedBoard)
                 }
             }
 
@@ -153,7 +153,7 @@ object DeducerTest : Spek({
                             0, 0, 0, 0, 0, 0, 0, 0, 1
                         )
                     )
-                    assertThat(deduce(board)).isEqualTo(expectedBoard)
+                    assertThat(board.deduce()).isEqualTo(expectedBoard)
                 }
             }
         }
@@ -187,7 +187,7 @@ object DeducerTest : Spek({
                             0, 0, 0, 0, 0, 0, 0, 0, 0
                         )
                     )
-                    assertThat(deduce(board)).isEqualTo(expectedBoard)
+                    assertThat(board.deduce()).isEqualTo(expectedBoard)
                 }
             }
 
@@ -219,7 +219,7 @@ object DeducerTest : Spek({
                             0, 0, 0, 0, 0, 0, 3, 6, 9
                         )
                     )
-                    assertThat(deduce(board)).isEqualTo(expectedBoard)
+                    assertThat(board.deduce()).isEqualTo(expectedBoard)
                 }
             }
 
@@ -254,7 +254,7 @@ object DeducerTest : Spek({
                             0, 0, 0, 0, 5, 0, 0, 0, 0
                         )
                     )
-                    assertThat(deduce(board)).isEqualTo(expectedBoard)
+                    assertThat(board.deduce()).isEqualTo(expectedBoard)
                 }
             }
 
