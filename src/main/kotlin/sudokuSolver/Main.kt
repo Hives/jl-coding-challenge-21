@@ -14,14 +14,14 @@ fun solve(board: Board): Board {
 
 typealias History = List<Guess>
 
-tailrec fun bar(history: History): History =
+private tailrec fun bar(history: History): History =
     if (history.last().board.isSolution()) {
         history
     } else {
         bar(foo(history))
     }
 
-fun foo(history: History): History = try {
+private fun foo(history: History): History = try {
     val newBoard = deduceUntilExhausted(history.last().board)
     println("we got here by deducing:")
     newBoard.print()

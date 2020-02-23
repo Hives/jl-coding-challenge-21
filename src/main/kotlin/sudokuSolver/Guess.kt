@@ -3,20 +3,20 @@ package sudokuSolver
 data class Guess(val board: Board, val index: Int)
 
 fun guess(board: Board): Guess {
-    val guessedIndex = board.unsolvedSquareWithFewestPossibilities()
-    println("guessedIndex: $guessedIndex")
-    println("possibilities: ${board.getPossibilitiesFor(guessedIndex)}")
-    val guessedValue = board.getPossibilitiesFor(guessedIndex).min()
+    val guessIndex = board.unsolvedSquareWithFewestPossibilities()
+    println("guessIndex: $guessIndex")
+    println("possibilities: ${board.getPossibilitiesFor(guessIndex)}")
+    val guessValue = board.getPossibilitiesFor(guessIndex).min()
         ?: throw Error("The square we tried to guess had no possible solutions")
     val newBoard =
         Board(board.squares.mapIndexed { index, value ->
-            if (index == guessedIndex) {
-                guessedValue
+            if (index == guessIndex) {
+                guessValue
             } else {
                 value
             }
         })
-    return Guess(newBoard, guessedIndex)
+    return Guess(newBoard, guessIndex)
 }
 
 tailrec fun modifyLastGuess(history: History): History {
