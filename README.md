@@ -28,9 +28,9 @@ Where a puzzle has more than one solution, this will only find one of them. Coul
 
 ### FP
 
-I *think* I've done this all in a functional style, i.e. all my functions are pure (no side effects), and all my variables are immutable. It felt like this made the solution much more convoluted that it would have been otherwise, but maybe that was just me.
+I *think* I've done this all in a functional style, i.e. all my functions are pure (no side effects, apart from `Board.print()`), and all my variables are immutable. It felt like this made the solution much more convoluted that it would have been otherwise, but maybe that was just me...
 
-One thing I was stuck on for a while was how achieve certain looping structures in a functional idiom, something like calling a function its own output in  a `while` loop. In a non-functional style (imperative?) I would have repeatedly assigned the output of the function to a mutable variable and then passed it back in to the function in the loop or something. I managed to achieve something similar instead by having the function recursively call itself. I used Kotlin's `tailrec` modifier to do this safely, just like Ricardo taught me.
+One thing I was stuck on for a while was how achieve certain looping structures in a functional style, something like calling a function its own output in  a `while` loop. In a non-functional style (imperative?) I would have repeatedly assigned the output of the function to a mutable variable and then passed it back in to the function in a loop or something. I managed to achieve something similar instead by having the function recursively call itself. Seems obvious now. I used Kotlin's `tailrec` modifier to do this safely, just like Ricardo taught me.
 
 ### Problems
 
