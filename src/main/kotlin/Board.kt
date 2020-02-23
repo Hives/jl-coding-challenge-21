@@ -47,4 +47,18 @@ data class Board(val squares: List<Int>) {
     private fun rowIndexOf(position: Int) = position / 9
     private fun colIndexOf(position: Int) = position % 9
     private fun subGridIndexOf(position: Int) = (colIndexOf(position) / 3) + (3 * (rowIndexOf(position) / 3))
+
+    fun print() = run {
+        val formattedSquares = squares
+            .map { it.toString() }
+            .chunked(9)
+            .map { it.add(6, "│").add(3, "│") }
+            .map { it.joinToString(" ") }
+            .add(6, "──────┼───────┼──────")
+            .add(3, "──────┼───────┼──────")
+            .joinToString("\n")
+
+        println(formattedSquares)
+    }
+
 }
