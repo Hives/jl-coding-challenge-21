@@ -8,6 +8,8 @@ data class Board(val squares: List<Int>) {
 
     fun isValid(): Boolean = noSquareHasSameValueAsAPeer() && everyEmptySquareHasAPossibleSolution()
 
+    fun isInvalid(): Boolean = !isValid()
+
     private fun noSquareHasSameValueAsAPeer(): Boolean =
         squares
             .filterIndexed { index, value -> getPeersFor(index).contains(value) }
@@ -61,7 +63,7 @@ data class Board(val squares: List<Int>) {
             .map { it.joinToString(" ") }
             .add(6, "──────┼───────┼──────")
             .add(3, "──────┼───────┼──────")
-            .joinToString("\n")
+            .joinToString("\n", postfix = "\n")
 
         println(formattedSquares)
     }

@@ -104,4 +104,23 @@ object BoardTest : Spek({
             assertThat(completeButInvalidBoard.isSolution()).isFalse()
         }
     }
+
+    describe("get square with fewest possibilities") {
+        it("it returns the index of the first square with the minimum possible solutions") {
+            val board = Board(
+                listOf(
+                    0, 2, 3, 4, 5, 6, 7, 8, 0,
+                    4, 5, 6, 7, 8, 9, 1, 2, 3,
+                    7, 8, 0, 1, 2, 3, 4, 5, 6,
+                    2, 3, 4, 5, 6, 7, 8, 9, 1,
+                    5, 6, 7, 8, 9, 1, 2, 3, 4,
+                    8, 9, 1, 2, 3, 4, 5, 6, 7,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0
+                )
+            )
+            assertThat(board.unsolvedSquareWithFewestPossibilities()).isEqualTo(8)
+        }
+    }
 })

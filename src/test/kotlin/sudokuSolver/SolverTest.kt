@@ -2,46 +2,13 @@ package sudokuSolver
 
 import assertk.assertThat
 import assertk.assertions.isEqualTo
+import assertk.assertions.isTrue
 import org.spekframework.spek2.Spek
 import org.spekframework.spek2.style.specification.describe
 
 object SolverTest : Spek({
     describe("Solver") {
-        it("gives the right answer for a board that only takes one iteration of the deducer") {
-            val board = Board(
-                listOf(
-                    0, 0, 3, 4, 5, 6, 7, 8, 9,
-                    4, 5, 6, 7, 8, 9, 1, 2, 3,
-                    7, 8, 9, 1, 2, 3, 4, 5, 6,
-                    2, 3, 4, 5, 6, 7, 8, 9, 1,
-                    5, 6, 7, 8, 9, 1, 2, 3, 4,
-                    8, 9, 1, 2, 3, 4, 5, 6, 7,
-                    3, 4, 5, 6, 7, 8, 9, 1, 2,
-                    6, 7, 8, 9, 1, 2, 3, 4, 5,
-                    9, 1, 2, 3, 4, 5, 6, 7, 8
-                )
-            )
-            assertThat(solve(board)).isEqualTo(completeBoard)
-        }
-
-        it("gives the right answer for a board that takes two iterations of the deducer") {
-            val board = Board(
-                listOf(
-                    0, 2, 3, 4, 5, 6, 7, 8, 0,
-                    4, 5, 6, 7, 8, 9, 1, 2, 3,
-                    7, 8, 0, 1, 2, 3, 4, 5, 6,
-                    2, 3, 4, 5, 6, 7, 8, 9, 1,
-                    5, 6, 7, 8, 9, 1, 2, 3, 4,
-                    8, 9, 1, 2, 3, 4, 5, 6, 7,
-                    3, 4, 5, 6, 7, 8, 9, 1, 2,
-                    6, 7, 8, 9, 1, 2, 3, 4, 5,
-                    0, 1, 2, 3, 4, 5, 6, 7, 8
-                )
-            )
-            assertThat(solve(board)).isEqualTo(completeBoard)
-        }
-
-        it("gives the right answer for a board that takes multiple iterations of the deducer") {
+        it("gives the right answer for a board that can be solved with multiple iterations of the deducer") {
             val board = Board(
                 listOf(
                     7, 0, 9, 0, 0, 2, 6, 8, 0,
@@ -69,6 +36,23 @@ object SolverTest : Spek({
                 )
             )
             assertThat(solve(board)).isEqualTo(solution)
+        }
+
+        xit("gives a solution for a board that can't be solved just with the deducer") {
+            val board = Board(
+                listOf(
+                    0, 0, 0, 0, 7, 4, 3, 1, 6,
+                    0, 0, 0, 6, 0, 3, 8, 4, 0,
+                    0, 0, 0, 0, 0, 8, 5, 0, 0,
+                    7, 2, 5, 8, 0, 0, 0, 3, 4,
+                    0, 0, 0, 0, 3, 0, 0, 5, 0,
+                    0, 0, 0, 0, 0, 2, 7, 9, 8,
+                    0, 0, 8, 9, 4, 0, 0, 0, 0,
+                    0, 4, 0, 0, 8, 5, 9, 0, 0,
+                    9, 7, 1, 3, 2, 6, 4, 8, 5
+                )
+            )
+            assertThat(solve(board).isSolution()).isTrue()
         }
     }
 })

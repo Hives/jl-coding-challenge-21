@@ -2,6 +2,7 @@ package sudokuSolver
 
 import assertk.assertThat
 import assertk.assertions.isEqualTo
+import assertk.assertions.isFailure
 import org.spekframework.spek2.Spek
 import org.spekframework.spek2.style.specification.describe
 
@@ -258,6 +259,27 @@ object DeduceTest : Spek({
                 }
             }
 
+        }
+
+        describe("unhappy paths") {
+            context("if it finds a square with no possibilities") {
+                val board = Board(
+                    listOf(
+                        1, 2, 3, 4, 5, 6, 7, 8, 0,
+                        0, 0, 0, 0, 0, 0, 0, 0, 9,
+                        0, 0, 0, 0, 0, 0, 0, 0, 0,
+                        0, 0, 0, 0, 0, 0, 0, 0, 0,
+                        0, 0, 0, 0, 0, 0, 0, 0, 0,
+                        0, 0, 0, 0, 0, 0, 0, 0, 0,
+                        0, 0, 0, 0, 0, 0, 0, 0, 0,
+                        0, 0, 0, 0, 0, 0, 0, 0, 0,
+                        0, 0, 0, 0, 0, 0, 0, 0, 0
+                    )
+                )
+                it("it throws an error") {
+                    assertThat { board.deduce() }.isFailure()
+                }
+            }
         }
     }
 })
