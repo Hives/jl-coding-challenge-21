@@ -2,7 +2,8 @@ package sudokuSolver
 
 data class Board(val squares: List<Int>) {
 
-    fun getPossibilitiesFor(index: Int) = (1..9).toSet() - getPeersFor(index)
+    fun getPossibilitiesFor(index: Int) =
+        ((1..9).toSet() - getPeersFor(index)).toList().sorted()
 
     fun isSolution(): Boolean = !squares.contains(0) && isValid()
 

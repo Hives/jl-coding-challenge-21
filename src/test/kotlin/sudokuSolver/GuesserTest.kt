@@ -68,9 +68,9 @@ object GuesserTest : Spek({
             val guess2 = Guess(
                 Board(
                     listOf(
-                        8, 0, 0, 0, 0, 0, 0, 0, 0,
-                        0, 0, 0, 0, 0, 0, 0, 0, 0,
-                        0, 0, 0, 0, 0, 0, 0, 0, 0,
+                        1, 0, 0, 0, 0, 0, 0, 0, 0,
+                        0, 0, 2, 0, 0, 0, 0, 0, 0,
+                        0, 0, 3, 0, 0, 0, 0, 0, 0,
                         0, 0, 0, 0, 0, 0, 0, 0, 0,
                         0, 0, 0, 0, 0, 0, 0, 0, 0,
                         0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -92,12 +92,12 @@ object GuesserTest : Spek({
                 assertThat(modifiedHistory.size).isEqualTo(history.size)
             }
 
-            it("increments the value of the last guess") {
-                assertThat(modifiedHistory.last().board.squares[0]).isEqualTo(9)
+            it("guesses the next possibility") {
+                assertThat(modifiedHistory.last().board.squares[0]).isEqualTo(4)
             }
         }
 
-        context("if the value of the last guess is 9") {
+        context("if the value of the last guess is already the highest possibility for that square") {
             val guess1 = Guess(completeBoard, 99)
             val guess2 = Guess(
                 Board(
@@ -118,15 +118,15 @@ object GuesserTest : Spek({
             val guess3 = Guess(
                 Board(
                     listOf(
-                        8, 9, 0, 0, 0, 0, 0, 0, 0,
-                        0, 0, 0, 0, 0, 0, 0, 0, 0,
-                        0, 0, 0, 0, 0, 0, 0, 0, 0,
-                        0, 0, 0, 0, 0, 0, 0, 0, 0,
-                        0, 0, 0, 0, 0, 0, 0, 0, 0,
-                        0, 0, 0, 0, 0, 0, 0, 0, 0,
-                        0, 0, 0, 0, 0, 0, 0, 0, 0,
-                        0, 0, 0, 0, 0, 0, 0, 0, 0,
-                        0, 0, 0, 0, 0, 0, 0, 0, 0
+                        8, 5, 0, 0, 0, 0, 0, 0, 0,
+                        0, 1, 0, 0, 0, 0, 0, 0, 0,
+                        0, 2, 0, 0, 0, 0, 0, 0, 0,
+                        0, 3, 0, 0, 0, 0, 0, 0, 0,
+                        0, 4, 0, 0, 0, 0, 0, 0, 0,
+                        0, 6, 0, 0, 0, 0, 0, 0, 0,
+                        0, 7, 0, 0, 0, 0, 0, 0, 0,
+                        0, 8, 0, 0, 0, 0, 0, 0, 0,
+                        0, 9, 0, 0, 0, 0, 0, 0, 0
                     )
                 ),
                 1

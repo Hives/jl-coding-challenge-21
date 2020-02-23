@@ -38,7 +38,7 @@ object SolverTest : Spek({
             assertThat(solve(board)).isEqualTo(solution)
         }
 
-        xit("gives a solution for a board that can't be solved just with the deducer") {
+        it("gives a solution for a board that can't be solved just with the deducer") {
             val board = Board(
                 listOf(
                     0, 0, 0, 0, 7, 4, 3, 1, 6,

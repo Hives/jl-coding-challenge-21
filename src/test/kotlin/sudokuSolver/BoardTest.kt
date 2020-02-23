@@ -44,7 +44,7 @@ object BoardTest : Spek({
                     0, 0, 0, 0, 0, 0, 0, 0, 0
                 )
             )
-            assertThat(board.getPossibilitiesFor(0)).isEqualTo(setOf(8, 9))
+            assertThat(board.getPossibilitiesFor(0)).isEqualTo(listOf(8, 9))
         }
 
         it("case 2") {
@@ -61,7 +61,7 @@ object BoardTest : Spek({
                     0, 0, 0, 0, 0, 0, 0, 0, 0
                 )
             )
-            assertThat(board.getPossibilitiesFor(0)).isEqualTo(emptySet())
+            assertThat(board.getPossibilitiesFor(0)).isEqualTo(emptyList())
         }
     }
 

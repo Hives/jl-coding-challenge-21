@@ -5,5 +5,35 @@ fun main() {
 }
 
 fun solve(board: Board): Board {
-    return deduceUntilExhausted(board)
+    val history = listOf(Guess(board, -1))
+    val finalHistory = bar(history)
+    println("solution:")
+    finalHistory.last().board.print()
+    return finalHistory.last().board
+}
+
+typealias History = List<Guess>
+
+tailrec fun bar(history: History): History =
+    if (history.last().board.isSolution()) {
+        history
+    } else {
+        bar(foo(history))
+    }
+
+fun foo(history: History): History = try {
+    val newBoard = deduceUntilExhausted(history.last().board)
+    println("we got here by deducing:")
+    newBoard.print()
+
+    if (newBoard.isSolution()) {
+        history + listOf(Guess(newBoard, -1))
+    } else {
+        val nextGuess = guess(newBoard)
+        println("index of guess: ${nextGuess.index}")
+        history + listOf(nextGuess)
+    }
+} catch(e: Error) {
+    println("a guess was bad")
+    modifyLastGuess(history)
 }
