@@ -6,6 +6,8 @@ It solves Sudokus.
 
 <https://coding-challenges.jl-engineering.net/challenges/challenge-21/>
 
+See second stab here: <https://github.com/Hives/jl-coding-challenge-21-2>
+
 ## Thoughts etc.
 
 ### TDD
@@ -19,6 +21,7 @@ Designing the algorithm up front I think meant I ended up with a more complex so
 ### Algorithm
 
 Speaking of algorithms, here's what I did:
+
 1. Repeatedly apply this basic rule to all cells until it results in no more changes: if a cell has only one possible option which doesn't appear in its peer group (row, column, subgrid), then fill that option into the cell.
 2. If the puzzle is complete, stop.
 3. Otherwise find the first cell with the minimum number of possibilities and guess that it's the lowest of the possibilities.
@@ -28,9 +31,9 @@ Where a puzzle has more than one solution, this will only find one of them. Coul
 
 ### FP
 
-I *think* I've done this all in a functional style, i.e. all my functions are pure (no side effects, apart from `Board.print()`), and all my variables are immutable. It felt like this made the solution much more convoluted that it would have been otherwise, but maybe that was just me...
+I _think_ I've done this all in a functional style, i.e. all my functions are pure (no side effects, apart from `Board.print()`), and all my variables are immutable. It felt like this made the solution much more convoluted that it would have been otherwise, but maybe that was just me...
 
-One thing I was stuck on for a while was how achieve certain looping structures in a functional style, something like calling a function its own output in  a `while` loop. In a non-functional style (imperative?) I would have repeatedly assigned the output of the function to a mutable variable and then passed it back in to the function in a loop or something. I managed to achieve something similar instead by having the function recursively call itself. Seems obvious now. I used Kotlin's `tailrec` modifier to do this safely, just like Ricardo taught me.
+One thing I was stuck on for a while was how achieve certain looping structures in a functional style, something like calling a function its own output in a `while` loop. In a non-functional style (imperative?) I would have repeatedly assigned the output of the function to a mutable variable and then passed it back in to the function in a loop or something. I managed to achieve something similar instead by having the function recursively call itself. Seems obvious now. I used Kotlin's `tailrec` modifier to do this safely, just like Ricardo taught me.
 
 ### Problems
 
