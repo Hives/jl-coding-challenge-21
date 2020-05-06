@@ -18,7 +18,7 @@ private tailrec fun deduceAndGuessUnlessSolved(history: History): History =
     }
 
 private fun deduceAndGuess(history: History): History = try {
-    val deduction = deduceUntilExhausted(history.last().board)
+    val deduction = deduceTilICantNoMore(history.last().board)
 
     if (deduction.isSolution()) {
         history + listOf(Guess(deduction, -1))

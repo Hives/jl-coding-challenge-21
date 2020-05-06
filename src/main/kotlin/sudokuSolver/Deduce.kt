@@ -1,11 +1,11 @@
 package sudokuSolver
 
-tailrec fun deduceUntilExhausted(board: Board): Board {
-    val deduced = board.deduce()
-    return if (board == deduced) {
+tailrec fun deduceTilICantNoMore(board: Board): Board {
+    val newBoard = board.deduce()
+    return if (newBoard == board) {
         board
     } else {
-        deduceUntilExhausted(deduced)
+        deduceTilICantNoMore(newBoard)
     }
 }
 
